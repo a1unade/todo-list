@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0E04588C-90EF-4630-975E-67C30C642B4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{51756386-8027-4DBC-9E5F-C666CFB74E60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7AB72BE3-CD64-43FC-BA25-F61BE967F9BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{950B9FE1-9959-4730-875D-56E284700D81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Application", "TodoList.Application\TodoList.Application.csproj", "{4AA0662D-F286-4734-BEDE-E15BF26F2FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Domain", "TodoList.Domain \TodoList.Domain.csproj", "{C8D9C80C-3D6A-4B2F-9637-84C418503B83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Infrastructure", "TodoList.Infrastructure\TodoList.Infrastructure.csproj", "{264FEE5F-53E5-4E41-9C42-481F485E3B5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Persistence", "TodoList.Persistence\TodoList.Persistence.csproj", "{0CE72E6C-A088-4DC0-A3CD-8BCDCE0D92FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.WebApi", "TodoList.WebApi\TodoList.WebApi.csproj", "{E50FAF0E-EED4-48FC-B9BA-9C8EFF84D469}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AA0662D-F286-4734-BEDE-E15BF26F2FB8} = {0E04588C-90EF-4630-975E-67C30C642B4E}
+		{C8D9C80C-3D6A-4B2F-9637-84C418503B83} = {0E04588C-90EF-4630-975E-67C30C642B4E}
+		{264FEE5F-53E5-4E41-9C42-481F485E3B5F} = {51756386-8027-4DBC-9E5F-C666CFB74E60}
+		{0CE72E6C-A088-4DC0-A3CD-8BCDCE0D92FA} = {51756386-8027-4DBC-9E5F-C666CFB74E60}
+		{E50FAF0E-EED4-48FC-B9BA-9C8EFF84D469} = {7AB72BE3-CD64-43FC-BA25-F61BE967F9BE}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AA0662D-F286-4734-BEDE-E15BF26F2FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA0662D-F286-4734-BEDE-E15BF26F2FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA0662D-F286-4734-BEDE-E15BF26F2FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA0662D-F286-4734-BEDE-E15BF26F2FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D9C80C-3D6A-4B2F-9637-84C418503B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D9C80C-3D6A-4B2F-9637-84C418503B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D9C80C-3D6A-4B2F-9637-84C418503B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D9C80C-3D6A-4B2F-9637-84C418503B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264FEE5F-53E5-4E41-9C42-481F485E3B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264FEE5F-53E5-4E41-9C42-481F485E3B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264FEE5F-53E5-4E41-9C42-481F485E3B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264FEE5F-53E5-4E41-9C42-481F485E3B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CE72E6C-A088-4DC0-A3CD-8BCDCE0D92FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CE72E6C-A088-4DC0-A3CD-8BCDCE0D92FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CE72E6C-A088-4DC0-A3CD-8BCDCE0D92FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CE72E6C-A088-4DC0-A3CD-8BCDCE0D92FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E50FAF0E-EED4-48FC-B9BA-9C8EFF84D469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50FAF0E-EED4-48FC-B9BA-9C8EFF84D469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50FAF0E-EED4-48FC-B9BA-9C8EFF84D469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50FAF0E-EED4-48FC-B9BA-9C8EFF84D469}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
