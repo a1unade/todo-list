@@ -51,12 +51,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd backend/TodoList
+          cd backend
           dotnet restore
 
       - name: Build the project
         run: |
-          cd backend/TodoList
+          cd backend
           dotnet build --no-restore /p:RunAnalyzersDuringBuild=true /p:TreatWarningsAsErrors=true
 
   test:
@@ -74,12 +74,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd backend/TodoList
+          cd backend
           dotnet restore
 
       - name: Build the project
         run: |
-          cd backend/TodoList
+          cd backend
           dotnet build --no-restore /p:RunAnalyzersDuringBuild=true /p:TreatWarningsAsErrors=true
           
           
