@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
     public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext(configuration);
-        services.AddContextAndRepositories();
+        services.AddRepositories();
         services.AddHttpContextAccessor();
     }
     
@@ -46,7 +46,7 @@ public static class ServiceCollectionExtensions
             .AddEntityFrameworkStores<ApplicationDbContext>();
     }
     
-    private static void AddContextAndRepositories(this IServiceCollection services)
+    private static void AddRepositories(this IServiceCollection services)
     {
         services
             .AddScoped<IDbContext, ApplicationDbContext>()

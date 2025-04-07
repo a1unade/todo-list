@@ -1,3 +1,5 @@
+![Backend CI](https://github.com/a1unade/todo-list/actions/workflows/backend-ci.yml/badge.svg)
+
 ## Техническое задание на разработку веб-приложения для управления задачами (Task Manager)   
 
 ### 1. Общее описание проекта
