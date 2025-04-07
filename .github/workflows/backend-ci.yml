@@ -51,12 +51,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd backend/YouTube
+          cd backend/TodoList
           dotnet restore
 
       - name: Build the project
         run: |
-          cd backend/YouTube
+          cd backend/TodoList
           dotnet build --no-restore /p:RunAnalyzersDuringBuild=true /p:TreatWarningsAsErrors=true
 
   test:
@@ -74,12 +74,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd backend/YouTube
+          cd backend/TodoList
           dotnet restore
 
       - name: Build the project
         run: |
-          cd backend/YouTube
+          cd backend/TodoList
           dotnet build --no-restore /p:RunAnalyzersDuringBuild=true /p:TreatWarningsAsErrors=true
           
           
