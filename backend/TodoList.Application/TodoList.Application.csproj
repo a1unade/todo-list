@@ -7,11 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Common\Messages\" />
-      <Folder Include="Common\Requests\" />
-      <Folder Include="Common\Responses\" />
       <Folder Include="DTOs\" />
-      <Folder Include="Features\" />
     </ItemGroup>
 
     <ItemGroup>
