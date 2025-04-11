@@ -38,6 +38,7 @@ app.UseCors(b => b
     .AllowCredentials()); 
 
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<RequestValidationMiddleware>();
 
 app.UseRouting();
 app.UseHttpsRedirection();

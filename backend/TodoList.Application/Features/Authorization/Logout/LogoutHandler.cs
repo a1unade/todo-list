@@ -17,11 +17,9 @@ public class LogoutHandler : IRequestHandler<LogoutCommand, BaseResponse>
         _signInManager = signInManager;
         _repository = repository;
     }
+    
     public async Task<BaseResponse> Handle(LogoutCommand request, CancellationToken cancellationToken)
     {
-        if (request.UserId == Guid.Empty)
-            throw new ValidationException(UserErrorMessages.UserIdIsNotCorrect);
-        
         var user = await _repository.FindById(request.UserId, cancellationToken);
 
         if (user is null)

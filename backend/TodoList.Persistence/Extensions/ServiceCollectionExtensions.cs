@@ -52,6 +52,7 @@ public static class ServiceCollectionExtensions
             .AddScoped<IDbContext, ApplicationDbContext>()
             .AddScoped<IDbSeeder, DbSeeder>()
             .AddTransient<Migrator>()
-            .AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            .AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>))
+            .AddScoped<IUserRepository, UserRepository>();
     }
 }

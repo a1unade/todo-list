@@ -24,10 +24,6 @@ public class LoginHandler : IRequestHandler<LoginCommand, AuthResponse>
     }
     public async Task<AuthResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-
-        if (String.IsNullOrEmpty(request.Password) || String.IsNullOrEmpty(request.Email))
-            throw new ValidationException("Пароль или почта не валидны");
-        
         var user = await _userRepository.FindByEmail(request.Email, cancellationToken);
 
         if (user is null)

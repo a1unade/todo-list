@@ -1,3 +1,4 @@
+using AutoMapper;
 using MediatR;
 using TodoList.Application.Common.Exceptions;
 using TodoList.Application.Common.Responses.User;
@@ -8,10 +9,12 @@ namespace TodoList.Application.Features.User.GetUserById;
 public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserInfoResponse>
 {
     private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
 
-    public GetUserByIdQueryHandler(IUserRepository userRepository)
+    public GetUserByIdQueryHandler(IUserRepository userRepository, IMapper mapper)
     {
         _userRepository = userRepository;
+        _mapper = mapper;
     }
     public async Task<UserInfoResponse> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
@@ -20,16 +23,9 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserInf
 
         var user = await _userRepository.FindById(request.Id, cancellationToken);
 
-        if (user == null || user.UserInfo == null)
+        if (user is null || user.UserInfo is null)
             throw new NotFoundException(typeof(Domain.Entities.User));
         
-        return new UserInfoResponse
-        {
-            IsSuccessfully = true,
-            Name = user.UserInfo.Name,
-            Surname = user.UserInfo.Surname!,
-            Email = user.Email!,
-            Nickname = user.Nickname,
-        };
+        return _mapper.Map<UserInfoResponse>(user);
     }
 }

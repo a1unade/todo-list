@@ -21,6 +21,7 @@ public sealed class ApplicationDbContext : IdentityDbContext<User, Role,  Guid>,
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Применение конфигураций сущностей из папки Configurations
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(Extensions.ServiceCollectionExtensions).Assembly);
         base.OnModelCreating(modelBuilder);
     }

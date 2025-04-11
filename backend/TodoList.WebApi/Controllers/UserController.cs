@@ -31,9 +31,7 @@ public class UserController : ControllerBase
     {
         var result = await _mediator.Send(new CodeCheckForEmailConfirmCommand(request), cancellationToken);
         if (result.IsSuccessfully)
-        {
             return Ok(result);
-        }
 
         return BadRequest(result);
     }

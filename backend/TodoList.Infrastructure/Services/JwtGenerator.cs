@@ -13,24 +13,19 @@ namespace TodoList.Infrastructure.Services;
 /// <summary>
 /// Генератор JWT токенов для авторизации/регистрации
 /// </summary>
-public class JwtGenerator : IJwtGenerator
+public class JwtGenerator(IConfiguration configuration, UserManager<User> userManager)
+    : IJwtGenerator
 {
     /// <summary>
     /// Конфигурация для настроек авторизации
     /// </summary>
-    private readonly AuthOptions _options;
+    private readonly AuthOptions _options = configuration.GetSection("JwtSettings").Get<AuthOptions>()!;
     
     /// <summary>
     /// Identity User Manager для управления пользователями
     /// </summary>
-    private readonly UserManager<User> _userManager;
-    
-    public JwtGenerator(IConfiguration configuration, UserManager<User> userManager)
-    {
-        _userManager = userManager;
-        _options = configuration.GetSection("JwtSettings").Get<AuthOptions>()!;
-    }
-    
+    private readonly UserManager<User> _userManager = userManager;
+
     /// <summary>
     /// Генерация JWT токена для авторизации/регистрации
     /// </summary>

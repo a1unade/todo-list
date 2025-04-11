@@ -10,6 +10,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddMediator();
         services.AddValidators();
+        services.AddAutoMapper();
     }
     
     private static void AddMediator(this IServiceCollection services)
@@ -20,5 +21,10 @@ public static class ServiceCollectionExtensions
     private static void AddValidators(this IServiceCollection services)
     {
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-    }        
+    }
+
+    private static void AddAutoMapper(this IServiceCollection services)
+    {
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    }
 }
