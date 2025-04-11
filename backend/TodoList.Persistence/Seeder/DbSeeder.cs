@@ -19,7 +19,7 @@ public class DbSeeder: IDbSeeder
         _webHostEnvironment = webHostEnvironment;
     }
     
-    public async Task SeedAsync(IDbContext context, CancellationToken cancellationToken = default)
+    public async System.Threading.Tasks.Task SeedAsync(IDbContext context, CancellationToken cancellationToken = default)
     {
         await SeedRolesAsync(_roleManager, context, cancellationToken);
 
@@ -32,7 +32,7 @@ public class DbSeeder: IDbSeeder
         new Role("User")
     };
     
-    private static async Task SeedRolesAsync(RoleManager<Role> roleManager, IDbContext context,
+    private static async System.Threading.Tasks.Task SeedRolesAsync(RoleManager<Role> roleManager, IDbContext context,
         CancellationToken cancellationToken)
     {
         foreach (var roleName in _roles)

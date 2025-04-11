@@ -1,12 +1,24 @@
+using FluentValidation.Results;
+
 namespace TodoList.Application.Common.Exceptions;
 
 public class ValidationException : BaseException
 {
-    public ValidationException(string message) : base(message)
+    public IDictionary<string, string[]> Errors { get; }
+
+    public ValidationException() : base("Validation failed")
     {
+        Errors = new Dictionary<string, string[]>();
     }
-    
-    public ValidationException() : base("Validation Failed.")
+
+    public ValidationException(IEnumerable<ValidationFailure> failures)
+        : base("Validation failed")
     {
+        Errors = failures
+            .GroupBy(e => e.PropertyName)
+            .ToDictionary(
+                g => g.Key,
+                g => g.Select(e => e.ErrorMessage).ToArray()
+            );
     }
 }

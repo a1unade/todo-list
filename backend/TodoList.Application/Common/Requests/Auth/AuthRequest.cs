@@ -1,9 +1,11 @@
+using TodoList.Application.Interfaces.Commands;
+
 namespace TodoList.Application.Common.Requests.Auth;
 
 /// <summary>
 /// Запрос на регистрацию
 /// </summary>
-public class AuthRequest
+public class AuthRequest: IAuthCommand
 {
     /// <summary>
     /// Пароль пользователя

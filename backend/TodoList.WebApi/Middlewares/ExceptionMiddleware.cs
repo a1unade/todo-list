@@ -1,62 +1,69 @@
 using System.Net;
 using System.Text.Json;
 using TodoList.Application.Common.Exceptions;
+using TodoList.Application.Common.Responses;
 
 namespace TodoList.WebApi.Middlewares;
 
-public class ExceptionMiddleware
+public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 {
-    private readonly RequestDelegate _next;
-
-    public ExceptionMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-
     public async Task InvokeAsync(HttpContext context)
     {
         try
         {
-            await _next(context);
+            await next(context);
         }
-        catch (Exception e)
+        catch (ValidationException ex) 
         {
-            await HandleExceptionAsync(context, e);
+            await HandleExceptionAsync(context, ex);
         }
+        catch (NotFoundException ex) 
+        {
+            await HandleExceptionAsync(context, ex);
+        }
+        catch (Exception ex) 
+        {
+            logger.LogError(ex, "Unhandled exception occurred during request processing.");
+
+            await HandleExceptionAsync(context, ex);
+        }
+
     }
 
     private Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         var code = HttpStatusCode.InternalServerError;
-        var result = String.Empty;
+        var response = new ErrorResponse
+        {
+            Code = "INTERNAL_ERROR",
+            Message = "An unexpected error occurred."
+        };
 
         switch (exception)
         {
             case ValidationException validationException:
                 code = HttpStatusCode.BadRequest;
-                result = JsonSerializer.Serialize(new {Error = validationException.Message});
+                response.Code = "VALIDATION_ERROR";
+                response.Message = "Validation failed.";
+                response.Errors = validationException.Errors;
                 break;
             
+            case NotFoundException notFoundException:
+                code = HttpStatusCode.NotFound;
+                response.Code = "NOT_FOUND";
+                response.Message = notFoundException.Message;
+                break;
+
             case BaseException baseException:
-                if (baseException.StatusCode != default)
-                    code = baseException.StatusCode;
-                result = JsonSerializer.Serialize(new { Error = baseException.Message });
+                code = baseException.StatusCode != default ? baseException.StatusCode : HttpStatusCode.InternalServerError;
+                response.Code = baseException.GetType().Name.ToUpperInvariant();
+                response.Message = baseException.Message;
                 break;
-            
-            // case NotFoundException notFoundException:
-            //     code = HttpStatusCode.NotFound;
-            //     result = JsonSerializer.Serialize(new { Error = notFoundException.Message });
-            //     break;
         }
 
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)code;
 
-        if (result == String.Empty)
-        {
-            result = JsonSerializer.Serialize(new { Error = exception.Message });
-        }
-
-        return context.Response.WriteAsync(result);
+        return context.Response.WriteAsync(JsonSerializer.Serialize(response));
     }
 }

@@ -1,4 +1,4 @@
-using System.Threading.Channels;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace TodoList.Domain.Entities;
@@ -11,7 +11,8 @@ public class User : IdentityUser<Guid>
     /// <summary>
     /// Отображаемое имя
     /// </summary>
-    public string Nickname { get; set; } = default!;
+    [MaxLength(60)]
+    public required string Nickname { get; set; }
     
     /// <summary>
     /// nav-prop Файл
@@ -26,10 +27,15 @@ public class User : IdentityUser<Guid>
     /// <summary>
     /// nav-prop для информации о пользователе
     /// </summary>
-    public Guid? UserInfoId { get; set; }
+    public Guid UserInfoId { get; set; }
     
     /// <summary>
     /// Дополнительная Информация о пользователе
     /// </summary>
     public UserInfo UserInfo { get; set; } = default!;
+    
+    /// <summary>
+    /// Проекты пользователя
+    /// </summary>
+    public ICollection<Project> Projects { get; set; } = default!;
 }
