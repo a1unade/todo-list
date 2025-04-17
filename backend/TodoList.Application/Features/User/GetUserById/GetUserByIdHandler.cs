@@ -6,7 +6,7 @@ using TodoList.Application.Interfaces.Repositories;
 
 namespace TodoList.Application.Features.User.GetUserById;
 
-public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserInfoResponse>
+public class GetUserByIdQueryHandler: IRequestHandler<GetUserByIdQuery, UserInfoResponse>
 {
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
