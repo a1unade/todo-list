@@ -12,8 +12,10 @@ const LoginPage = () => {
                     <h2 className="auth__title">Login</h2>
                     <p className="auth__subtitle">Welcome back! Please enter your credentials to access your account.</p>
                     <form className="auth__form">
-                        <input type="email" className="auth__input" placeholder="Email" />
-                        <input type="password" className="auth__input" placeholder="Password" />
+                        <div className="auth__form-fields">
+                            <input type="email" className="auth__input" placeholder="Email" />
+                            <input type="password" className="auth__input" placeholder="Password" />
+                        </div>
                         <button type="submit" className="auth__button">Login</button>
                     </form>
                     <div className="auth__footer">

@@ -1,5 +1,6 @@
 /* import styles */
 @import "assets/styles/auth.css";
+@import "assets/styles/404.css";
 
 :root {
   line-height: 1.5;

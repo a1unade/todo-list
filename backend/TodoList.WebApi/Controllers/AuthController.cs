@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TodoList.Application.Common.Requests.Auth;
+using TodoList.Application.Common.Requests.Jwt;
 using TodoList.Application.Features.Authorization.Auth;
 using TodoList.Application.Features.Authorization.Login;
 using TodoList.Application.Features.Authorization.Logout;
+using TodoList.Application.Features.Jwt;
 
 namespace TodoList.WebApi.Controllers;
 
@@ -71,5 +73,16 @@ public class AuthController(IMediator mediator) : ControllerBase
             Response.Cookies.Delete("auth-cookie");
 
         return Ok();
+    }
+
+    [HttpPost("GenerateStepJwtToken")]
+    public async Task<IActionResult> GenerateStepJwtToken(GenerateJwtRequest request, CancellationToken cancellationToken)
+    {
+        var response = await mediator.Send(new GetGeneratedJwtQuery(request), cancellationToken);
+        
+        if (String.IsNullOrEmpty(response.Token))
+            return BadRequest();
+        
+        return Ok(response);
     }
 }
