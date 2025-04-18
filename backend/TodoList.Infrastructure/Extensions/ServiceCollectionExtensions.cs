@@ -1,7 +1,9 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using TodoList.Application.Interfaces.Contexts;
 using TodoList.Application.Interfaces.Services;
 using TodoList.Infrastructure.Behaviours;
+using TodoList.Infrastructure.Contexts;
 using TodoList.Infrastructure.Services;
 
 namespace TodoList.Infrastructure.Extensions;
@@ -15,14 +17,12 @@ public static class ServiceCollectionExtensions
         services.AddPipelineBehaviours();
     }
 
-    private static void AddServices(this IServiceCollection services)
-    {
+    private static void AddServices(this IServiceCollection services) =>
         services
             .AddScoped<IMediator, Mediator>()
             .AddScoped<IJwtGenerator, JwtGenerator>()
+            .AddScoped<IUserContext, UserContext>()
             .AddTransient<IEmailService, EmailService>();
-    }
-
     private static void AddPipelineBehaviours(this IServiceCollection services)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

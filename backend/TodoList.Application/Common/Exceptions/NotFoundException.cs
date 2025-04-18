@@ -10,6 +10,7 @@ public class NotFoundException : Exception
         [typeof(File)] = "Файл не найден",
         [typeof(User)] = "Пользователь не найден",
         [typeof(UserInfo)] = "Информация о пользователе не найдена",
+        [typeof(Project)] = "Проект не найден"
     };
 
     public NotFoundException(Guid id)

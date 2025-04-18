@@ -6,22 +6,33 @@ namespace TodoList.Domain.Entities;
 /// <summary>
 /// Задача для проекта
 /// </summary>
-public class Task: BaseEntity
+public class Task : BaseEntity
 {
+    public Task(
+        string title,
+        string description,
+        byte status,
+        Project project)
+    {
+        Title = title;
+        Description = description;
+        Status = status;
+        Project = project;
+    }
+
+    private Task()
+    {
+    }
+
     /// <summary>
     /// Название задачи
     /// </summary>
-    public string Title { get; set; } = default!;
+    public string Title { get; set; } = null!;
     
     /// <summary>
     /// Описание задачи
     /// </summary>
-    public string Description { get; set; } = default!;
-    
-    /// <summary>
-    /// Дата создания задачи
-    /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public string Description { get; set; } = null!;
     
     /// <summary>
     /// Дата завершения задачи
@@ -37,12 +48,12 @@ public class Task: BaseEntity
     /// <summary>
     /// Теги, добавленные к задаче
     /// </summary>
-    public ICollection<TaskTag> Tags { get; set; } = default!;
+    public List<TaskTag> Tags { get; set; } = null!;
     
     /// <summary>
     /// Проект, к которому относится задача
     /// </summary>
-    public Project Project { get; set; } = default!;
+    public Project Project { get; set; } = null!;
     
     /// <summary>
     /// nav-prop свойство для связи с проектом 
