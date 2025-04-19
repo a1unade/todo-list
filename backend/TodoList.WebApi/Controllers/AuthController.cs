@@ -23,17 +23,17 @@ public class AuthController(IMediator mediator) : ControllerBase
     {
         var result = await mediator.Send(new AuthCommand(request), cancellationToken);
 
-        if (result.IsSuccessfully)
+        if (!result.IsSuccessfully)
+            return NotFound(result);
+        
+        Response.Cookies.Append("auth-cookie", result.Token, new CookieOptions
         {
-            Response.Cookies.Append("auth-cookie", result.Token, new CookieOptions
-            {
-                Path = "/",
-                Expires = DateTimeOffset.Now.AddHours(2),
-            });
-            return Ok(result);
-        }
+            Path = "/",
+            Expires = DateTimeOffset.Now.AddHours(2),
+        });
+        
+        return Ok(result);
 
-        return NotFound(result);
     }
 
     /// <summary>
@@ -46,17 +46,17 @@ public class AuthController(IMediator mediator) : ControllerBase
     {
         var result = await mediator.Send(new LoginCommand(request), cancellationToken);
 
-        if (result.IsSuccessfully)
+        if (!result.IsSuccessfully)
+            return NotFound(result);
+        
+        Response.Cookies.Append("auth-cookie", result.Token, new CookieOptions
         {
-            Response.Cookies.Append("auth-cookie", result.Token, new CookieOptions
-            {
-                Path = "/",
-                Expires = DateTimeOffset.Now.AddHours(2),
-            });
-            return Ok(result);
-        }
+            Path = "/",
+            Expires = DateTimeOffset.Now.AddHours(2),
+        });
+        
+        return Ok(result);
 
-        return NotFound(result);
     }
     
     /// <summary>
@@ -80,7 +80,7 @@ public class AuthController(IMediator mediator) : ControllerBase
     {
         var response = await mediator.Send(new GetGeneratedJwtQuery(request), cancellationToken);
         
-        if (String.IsNullOrEmpty(response.Token))
+        if (string.IsNullOrEmpty(response.Token))
             return BadRequest();
         
         return Ok(response);

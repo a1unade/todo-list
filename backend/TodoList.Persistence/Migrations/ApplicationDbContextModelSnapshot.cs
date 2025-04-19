@@ -190,7 +190,7 @@ namespace TodoList.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Project");
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.Role", b =>
@@ -244,7 +244,7 @@ namespace TodoList.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.Task", b =>
@@ -282,7 +282,7 @@ namespace TodoList.Persistence.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Task");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.TaskTag", b =>
@@ -297,7 +297,7 @@ namespace TodoList.Persistence.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("TaskTag");
+                    b.ToTable("TaskTags");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.User", b =>

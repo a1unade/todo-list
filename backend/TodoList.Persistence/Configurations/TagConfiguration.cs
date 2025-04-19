@@ -11,6 +11,8 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
 {
     public void Configure(EntityTypeBuilder<Tag> builder)
     {
+        builder.HasKey(x => x.Id);
+        
         builder.Property(t => t.Text)
             .IsRequired()
             .HasMaxLength(30);

@@ -12,8 +12,8 @@ using TodoList.Persistence.Contexts;
 namespace TodoList.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250408204940_Projects")]
-    partial class Projects
+    [Migration("20250418151207_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,6 +141,9 @@ namespace TodoList.Persistence.Migrations
                     b.Property<string>("ContentType")
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -151,6 +154,9 @@ namespace TodoList.Persistence.Migrations
 
                     b.Property<long>("Size")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -163,6 +169,9 @@ namespace TodoList.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -174,6 +183,9 @@ namespace TodoList.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
@@ -181,7 +193,7 @@ namespace TodoList.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Project");
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.Role", b =>
@@ -222,14 +234,20 @@ namespace TodoList.Persistence.Migrations
                         .HasMaxLength(7)
                         .HasColumnType("character varying(7)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.Task", b =>
@@ -260,11 +278,14 @@ namespace TodoList.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Task");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.TaskTag", b =>
@@ -279,7 +300,7 @@ namespace TodoList.Persistence.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("TaskTag");
+                    b.ToTable("TaskTags");
                 });
 
             modelBuilder.Entity("TodoList.Domain.Entities.User", b =>
@@ -373,22 +394,24 @@ namespace TodoList.Persistence.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("Country")
-                        .HasMaxLength(60)
-                        .HasColumnType("character varying(60)");
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("character varying(1)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("character varying(60)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Surname")
-                        .HasMaxLength(60)
-                        .HasColumnType("character varying(60)");
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");

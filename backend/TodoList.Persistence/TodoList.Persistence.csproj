@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
         <PrivateAssets>all</PrivateAssets>
@@ -24,7 +25,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TodoList.Application\TodoList.Application.csproj" />
-      <ProjectReference Include="..\TodoList.Domain \TodoList.Domain.csproj" />
+      <ProjectReference Include="..\TodoList.Domain\TodoList.Domain.csproj" />
     </ItemGroup>
 
 </Project>
