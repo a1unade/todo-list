@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoList.Application.Common.Requests.Project.CreateProject;
+using TodoList.Application.Common.Requests.Project.GetProjectById;
 using TodoList.Application.Common.Requests.Project.GetProjects;
 using TodoList.Application.Common.Requests.Project.UpdateProject;
 using TodoList.Application.Features.Project.CreateProject;
 using TodoList.Application.Features.Project.DeleteProject;
+using TodoList.Application.Features.Project.GetProjectById;
 using TodoList.Application.Features.Project.GetProjects;
 using TodoList.Application.Features.Project.UpdateProject;
 
@@ -33,8 +35,26 @@ public class ProjectController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetProjectsResponse))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpGet]
     public async Task<GetProjectsResponse> GetProjectsAsync(CancellationToken cancellationToken)
         => await _mediator.Send(new GetProjectsQuery(), cancellationToken);
+
+    /// <summary>
+    /// Получить проект по Id
+    /// </summary>
+    /// <param name="projectId">ИД проекта</param>
+    /// <param name="cancellationToken">Токен отмены</param>
+    /// <returns>Список проектов</returns>
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetProjectByIdResponse))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpGet("{projectId}")]
+    public async Task<GetProjectByIdResponse> GetProjectByIdAsync([FromRoute] Guid projectId, CancellationToken cancellationToken)
+        => await _mediator.Send(new GetProjectByIdQuery
+        {
+            Id = projectId
+        }, cancellationToken);
+
     
     /// <summary>
     /// Создать проект
