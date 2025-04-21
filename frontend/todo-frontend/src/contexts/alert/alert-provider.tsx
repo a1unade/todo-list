@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { AlertType } from '../types/alert/alert-type';
-import { AlertContext } from './alert-context';
+import { AlertType } from '../../types/alert/alert-type.ts';
+import { AlertContext } from './alert-context.tsx';
 
 export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [alerts, setAlerts] = useState<AlertType[]>([]);

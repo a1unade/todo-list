@@ -38,6 +38,141 @@
     height: 40px;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.auth__error-message {
+    color: rgb(217, 48, 37);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.auth__error-message svg {
+    margin-right: 10px;
+}
+
+.auth__error-message span {
+    font-size: 13px;
+}
+
+.auth__input-container {
+    position: relative;
+    width: 100%;
+}
+
+.auth__input__label {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    font-size: 14px;
+    color: #999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.auth__toggle-button {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #4a90e2;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    padding: 0 0 0 5px;
+}
+
+.auth__toggle-button:hover {
+    text-decoration: underline;
+}
+
+.auth__input.error, .auth__input.error:focus {
+    border-color: rgb(217, 48, 37);
+}
+
+.auth__input.error:focus + .auth__input__label,
+.auth__input.error:not(:placeholder-shown) + .auth__input__label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: rgb(217, 48, 37);
+    background-color: white;
+    padding: 0 5px;
+}
+
+.auth__select:required:invalid {
+    color: rgb(118, 118, 118);
+}
+
+.auth__select:not(:required:invalid) {
+    color: rgb(32, 33, 36);
+}
+
+.auth__select:focus + .auth__input__label,
+.auth__select:not([value=""]) + .auth__input__label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #4a90e2;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.auth__select.error:focus + .auth__input__label,
+.auth__select.error:not([value=""]) + .auth__input__label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: rgb(217, 48, 37);
+    background-color: white;
+    padding: 0 5px;
+}
+
+.auth__select:invalid + .auth__input__label {
+    top: 14px;
+    left: 12px;
+    font-size: 16px;
+    color: #999;
+}
+
+.auth__input:focus + .auth__input__label,
+.auth__input:not(:placeholder-shown) + .auth__input__label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #4a90e2;
+    background-color: white;
+    padding: 0 5px;
+}
+
 .auth__project-name {
     font-size: 24px;
     font-weight: 600;
@@ -81,12 +216,23 @@
 }
 
 .auth__input {
-    padding: 12px;
-    border: 1px solid #d1d5db;
+    width: 90%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 14px;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.3s;
+}
+
+.auth__select {
+    width: 98%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
 .auth__input:focus {
