@@ -1,14 +1,8 @@
 import React from "react";
 
-const RegisterLastStep = (props: {
-    step: number,
-    setStep: React.Dispatch<React.SetStateAction<number>>
-}) => {
-    const {step, setStep} = props;
-
+const RegisterLastStep = () => {
     const handleNextClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-
     }
 
     return (
