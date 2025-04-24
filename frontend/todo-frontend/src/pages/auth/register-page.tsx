@@ -54,7 +54,7 @@ const RegisterPage = () => {
             case 4:
                 return (<RegisterEmailStep step={step} setStep={setStep} />);
             case 5:
-                return (<RegisterLastStep step={step} setStep={setStep} />);
+                return (<RegisterLastStep />);
             default:
                 return null;
         }
