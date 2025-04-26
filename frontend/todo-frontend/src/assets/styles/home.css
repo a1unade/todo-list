@@ -33,6 +33,10 @@
     font-size: 0.875rem;
 }
 
+.widget--with-image {
+    justify-content: space-between;
+}
+
 .dashboard__btn {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
@@ -42,14 +46,16 @@
 }
 
 .dashboard__btn--ghost {
-    background: none;
-    border: 1px solid #1e293b;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0.2,0.2);
+    border: none;
     color: #1e293b;
     margin-right: 0.5rem;
 }
 
 .dashboard__btn--primary {
     background-color: #4f75ff;
+    box-shadow: 0 2px 8px rgba(0,0,0.2,0.2);
     color: #fff;
     border: none;
 }
@@ -72,20 +78,26 @@
 }
 
 .widget__value {
-    font-size: 1.5rem;
+    font-size: 3rem;
+    margin: 10px 10px 10px 0;
     font-weight: bold;
 }
 
 .widget__label {
     font-size: 0.875rem;
     color: #6b7280;
+    margin: 0;
+}
+
+.widget__header {
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .widget__image {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background-color: #eef3fd;
-    border-radius: 8px;
 }
 
 .dashboard__bottom {

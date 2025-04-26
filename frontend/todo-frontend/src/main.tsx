@@ -14,6 +14,7 @@ import Home from "./pages/home";
 import {LoadingProvider} from "./contexts/loading/loading-provider.tsx";
 import {useLoading} from "./hooks/loading/use-loading.ts";
 import { ScaleLoader } from "react-spinners";
+import ProjectsPage from "./pages/projects";
 
 const App = () => {
     const { alerts, removeAlert } = useAlerts();
@@ -36,7 +37,8 @@ const App = () => {
             <Routes>
                 <Route path={"/home"} element={<Home />} />
                 <Route path={"/login"} element={<LoginPage />} />
-                <Route path={"register"} element={<RegisterPage />} />
+                <Route path={"/register"} element={<RegisterPage />} />
+                <Route path={"/projects"} element={<ProjectsPage />} />
                 <Route path={"/not-found"} element={<NotFoundPage />} />
                 <Route path={"*"} element={<NotFoundPage />} />
             </Routes>
